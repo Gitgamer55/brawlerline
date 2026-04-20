@@ -25,6 +25,13 @@ def create_parser():
     parser.add_argument("--pet", type=int, choices=[0, 1])
     return parser
 
+
+def match_attr(value, query):
+    if query.startswith("!"):
+        return value.lower() != query[1:].lower()
+    return value.lower() == query.lower()
+    
+
 def main():
     try:
         with open('brawlers.json', 'r') as f:
@@ -59,16 +66,23 @@ ____  ____   __   _  _  __    ____  ____  __    __  __ _  ____
 
             results = []
             for name, d in brawlers.items():
-                if args.name.lower() not in name.lower(): continue
-                if args.rarity and d['rarity'].lower() != args.rarity.lower(): continue
-                if args.b_class and d['class'].lower() != args.b_class.lower(): continue
-                if args.attack_type and d['attack_type'].lower() != args.attack_type.lower(): continue
-                if args.projectile_pattern and d['projectile_pattern'].lower() != args.projectile_pattern.lower(): continue
-                if args.range and d['range'].lower() != args.range.lower(): continue
-                if args.mobility and d['mobility'].lower() != args.mobility.lower(): continue
-                if args.spawns and d['spawns'].lower() != args.spawns.lower(): continue
-                if args.super_type and d['super_type'].lower() != args.super_type.lower(): continue
-                if args.tag and args.tag.lower() not in [t.lower() for t in d.get('tags', [])]: continue
+                if args.rarity and not match_attr(d['rarity'], args.rarity): continue
+                if args.b_class and not match_attr(d['class'], args.b_class): continue
+                if args.attack_type and not match_attr(d['attack_type'], args.attack_type): continue
+                if args.projectile_pattern and not match_attr(d['projectile_pattern'], args.projectile_pattern): continue
+                if args.range and not match_attr(d['range'], args.range): continue
+                if args.mobility and not match_attr(d['mobility'], args.mobility): continue
+                if args.spawns and not match_attr(d['spawns'], args.spawns): continue
+                if args.super_type and not match_attr(d['super_type'], args.super_type): continue
+
+                if args.tag:
+                    tags = [t.lower() for t in d.get('tags', [])]
+                    if args.tag.startswith("!"):
+                        if args.tag[1:].lower() in tags:
+                            continue
+                    else:
+                        if args.tag.lower() not in tags:
+                            continue
 
                 if args.dot is not None and d['has_dot'] != bool(args.dot): continue
                 if args.cc is not None and d['has_cc'] != bool(args.cc): continue
