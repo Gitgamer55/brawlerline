@@ -1,0 +1,18 @@
+{
+    "rarity": "",
+    "class": "",
+    "attack_type": "",
+    "projectile_pattern": "",
+    "range": "",
+    "has_dot": true/false,
+    "has_cc": true/false,
+    "heals": true/false,
+    "mobility": "",
+    "can_dash": true/false,
+    "can_jump": true/false,
+    "spawns": "",
+    "has_turret": true/false,
+    "has_pet": true/false,
+    "super_type": "",
+    "tags": []
+}
