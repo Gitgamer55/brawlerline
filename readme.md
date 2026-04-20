@@ -162,10 +162,10 @@ Probably shouldn't use these for guessing unless you're REALLY desperate.
 -range long
 ```
 
-### Find all tanks with dash:
+### Find all non-tanks with dash:
 
 ```
--class Tank --dash=1
+-class !Tank --dash 1
 ```
 
 ### Find throwers:
@@ -183,7 +183,7 @@ Probably shouldn't use these for guessing unless you're REALLY desperate.
 ### Combine filters:
 
 ```
--class Damage Dealer -range medium --cc=1
+-class Damage Dealer -range medium --cc 1
 ```
 
 ---
