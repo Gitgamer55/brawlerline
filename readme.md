@@ -5,6 +5,8 @@ ____  ____   __   _  _  __    ____  ____  __    __  __ _  ____
 (____/(__\_)\_/\_/(_/\_)\____/(____)(__\_)\____/(__)\_)__)(____)
 ```
 
+### THIS TOOL IS FANMADE AND IS NOT IN ANY WAY AFFILIATED WITH SUPERCELL AND ITS SUBSIDIARIES.
+
 # BrawlerLine CLI
 
 A command-line search engine for filtering and identifying Brawl Stars brawlers using structured attributes.
